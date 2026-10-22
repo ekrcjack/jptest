@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N4 2010–2011年 真題</title>
+<style>
+:root{
+  --bg:#f7f5f0; --card:#ffffff; --ink:#1f2328; --muted:#6b7078; --line:#e3dfd6;
+  --accent:#b8412e; --accent-soft:#f6e3df; --ok:#1f7a4d; --ok-soft:#dff1e7; --ng:#b3261e; --ng-soft:#f9e0de;
+  --chip:#efebe3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16181b; --card:#1f2226; --ink:#e7e5e0; --muted:#9aa0a8; --line:#33373d;
+    --accent:#e0735f; --accent-soft:#3a2622; --ok:#5cc28d; --ok-soft:#1d3428; --ng:#f08a80; --ng-soft:#3b2220; --chip:#2a2e33;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16181b; --card:#1f2226; --ink:#e7e5e0; --muted:#9aa0a8; --line:#33373d;
+  --accent:#e0735f; --accent-soft:#3a2622; --ok:#5cc28d; --ok-soft:#1d3428; --ng:#f08a80; --ng-soft:#3b2220; --chip:#2a2e33;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 "Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","PingFang TC","Noto Sans TC",sans-serif}
+a{color:var(--accent)}
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0}
+.bar h1{font-size:18px;margin:0;flex:1 1 auto;white-space:nowrap}
+.bar h1 a{text-decoration:none;color:var(--muted);font-weight:400}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:10px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 14px;font:inherit;font-size:14px;cursor:pointer}
+.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:5px 12px;font:inherit;font-size:14px;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.score{font-size:14px;color:var(--muted)}
+.score b{color:var(--ink)}
+select.btn{padding:5px 8px}
+main{padding:16px 0 120px}
+.notes{background:var(--accent-soft);border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:16px}
+h2.sec{font-size:20px;margin:28px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.mondai{margin:22px 0 10px}
+.mondai h3{font-size:16px;margin:0 0 4px;color:var(--accent)}
+.instr{font-size:14px;color:var(--muted);margin:0 0 10px}
+.group{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.passage{background:var(--chip);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:15.5px}
+.group img{max-width:100%;height:auto;display:block;margin:4px auto 12px;border-radius:6px;background:#fff}
+.q{padding:10px 0;border-top:1px dashed var(--line)}
+.group .q:first-of-type{border-top:0}
+.stem{margin:0 0 8px}
+.qn{display:inline-block;min-width:28px;padding:0 6px;margin-right:8px;border:1.5px solid var(--ink);border-radius:4px;text-align:center;font-weight:700;font-size:14px;line-height:22px}
+.stem u{text-decoration-thickness:1.5px;text-underline-offset:4px}
+.choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px}
+.choices.long{grid-template-columns:1fr}
+.ch{display:flex;gap:8px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.ch:hover{border-color:var(--muted)}
+.ch .k{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted);display:inline-flex;align-items:center;justify-content:center;font-size:13px;margin-top:3px}
+.ch.picked{border-color:var(--ink);background:var(--chip)}
+.ch.picked .k{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ch.right{border-color:var(--ok);background:var(--ok-soft)}
+.ch.right .k{background:var(--ok);border-color:var(--ok);color:#fff}
+.ch.wrong{border-color:var(--ng);background:var(--ng-soft)}
+.ch.wrong .k{background:var(--ng);border-color:var(--ng);color:#fff}
+.fb{margin-top:8px;font-size:14.5px;border-left:3px solid var(--line);padding:4px 0 4px 10px;display:none}
+.fb.show{display:block}
+.fb .verdict{font-weight:700}
+.fb .verdict.ok{color:var(--ok)} .fb .verdict.ng{color:var(--ng)}
+details.script{margin-top:6px}
+details.script summary{cursor:pointer;color:var(--muted);font-size:14px}
+details.script div{background:var(--chip);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px}
+.audio{position:sticky;top:var(--hdr,96px);z-index:5;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:10px 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.audio audio{flex:1 1 260px;width:100%}
+.audio .hint{font-size:13px;color:var(--muted)}
+.hidden{display:none!important}
+.result{background:var(--card);border:2px solid var(--ink);border-radius:12px;padding:14px 16px;margin:20px 0}
+.result table{border-collapse:collapse;width:100%;font-size:14.5px}
+.result td,.result th{padding:4px 6px;border-bottom:1px solid var(--line);text-align:left}
+.result td.num{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.choices{grid-template-columns:1fr 1fr}.bar h1{font-size:16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="bar">
+    <h1><a href="../index.html?level=N4">N4題庫</a> ／ 2010–2011年 真題</h1>
+    <select class="btn" id="mode" title="作答模式">
+      <option value="practice">練習模式（即時對答案）</option>
+      <option value="exam">考試模式（交卷後對答案）</option>
+    </select>
+    <button class="btn" id="theme" title="切換深淺色">◐</button>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="bar" style="padding-top:0">
+    <span class="score" id="score"></span>
+    <span style="flex:1"></span>
+    <label class="score"><input type="checkbox" id="wrongOnly"> 只看錯題</label>
+    <button class="btn primary" id="submit">交卷</button>
+    <button class="btn" id="reset">重新作答</button>
+  </div>
+</div></header>
+<main class="wrap" id="main"></main>
+<script id="data" type="application/json">{"id": "2010-2011", "level": "N4", "title": "2010–2011年 真題", "audio": null, "notes": "答案依PDF內附「参考答案」（第12頁）表格，逐題與解析核對一致。另附的答案1.jpg／答案2.jpg 為另一版本的文字答案，與本卷有出入（如文字語彙(23)寫「来ませんね」、讀解(30)(32)題號與選項文字不符、(34)(35)內容完全不同），故未採用。本卷題號依原卷：文字・語彙1–35，文法・讀解重新從1開始編為1–35。修正的明顯錯字：文字語彙(28)題幹原印「この 車は ヨーロッパです」，依解析（產自歐洲）補為「ヨーロッパせいです」；讀解(27)選項2原印「一緒に病院に言ってほしい」改為「行ってほしい」；讀解(30)選項2原印「お客様を接待のは」改為「接待するのは」；聽解もんだい1第8題原文「28 いたら」改為「28人いたら」。文字語彙(6)選項3原印「ほこんで」改為「はこんで」。聽解1番原文「熱いですから」照原文保留（應為「暑い」）。聽解部分原卷無解析，說明為自行撰寫；もんだい3、4的選項取自聽解原文。其餘說明據PDF中文解析濃縮改寫為繁體。讀解(35)解析原文誤寫天婦羅課在「星期一和星期二」，實際表格為月曜／水曜，已依表格撰寫。", "sections": [{"name": "言語知識（文字・語彙）", "mondai": [{"no": 1, "instruction": "＿＿＿の ことばは ひらがなで どう かきますか。1・2・3・4から いちばん いい ものを ひとつ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 1, "stem": "この ほんだなは <u>自分<\/u>で つくりました。", "choices": ["じぷん", "じぶん", "じいぷん", "じいぶん"], "answer": 2, "explain": "句意：這個書架是我自己做的。「自分」讀作「じぶん」，「分」在此讀「ぶん」。"}]}, {"passage": null, "image": null, "questions": [{"n": 2, "stem": "この <u>旅館<\/u>は とても ゆうめいです。", "choices": ["りょうかん", "りょうがん", "りょかん", "りょがん"], "answer": 3, "explain": "句意：這家旅館非常有名。「旅」音讀「りょ」（短音），「館」音讀「かん」。"}]}, {"passage": null, "image": null, "questions": [{"n": 3, "stem": "今は <u>特に<\/u> ほしい ものは ありません。", "choices": ["さきに", "べつに", "すぐに", "とくに"], "answer": 4, "explain": "句意：現在沒有特別想要的東西。「特に」讀「とくに」，意為特別；「べつに」寫作「別に」。"}]}, {"passage": null, "image": null, "questions": [{"n": 4, "stem": "なつやすみの よていが <u>決まりました<\/u>。", "choices": ["あつまりました", "きまりました", "はじまりました", "とまりました"], "answer": 2, "explain": "句意：暑假的安排已經定好了。「決まる」讀「きまる」，意為決定；其他為集まる、始まる、止まる。"}]}, {"passage": null, "image": null, "questions": [{"n": 5, "stem": "この 国は ロボットの ぎじゅつが <u>進んで<\/u> いる。", "choices": ["つづんで", "すずんで", "つつんで", "すすんで"], "answer": 4, "explain": "句意：這個國家的機器人技術很先進。「進む」讀「すすむ」，意為前進、進步。"}]}, {"passage": null, "image": null, "questions": [{"n": 6, "stem": "スーツケースを <u>運んで<\/u> います。", "choices": ["かんで", "ふんで", "はこんで", "たのんで"], "answer": 3, "explain": "句意：正在搬運行李箱。「運ぶ」讀「はこぶ」，意為搬運；其他為噛む（咬）、踏む（踩）、頼む（拜託）。"}]}, {"passage": null, "image": null, "questions": [{"n": 7, "stem": "<u>空港<\/u>まで バスで 行きます。", "choices": ["こうく", "こうくう", "くうこ", "くうこう"], "answer": 4, "explain": "句意：坐公車去機場。「空」音讀「くう」，「港」音讀「こう」，合為「くうこう」。"}]}, {"passage": null, "image": null, "questions": [{"n": 8, "stem": "あさより かぜが すこし <u>弱く<\/u> なりました。", "choices": ["よわく", "つよく", "おそく", "はやく"], "answer": 1, "explain": "句意：風比早上弱了一些。「弱い」讀「よわい」；強い、遅い、早い為干擾項。"}]}, {"passage": null, "image": null, "questions": [{"n": 9, "stem": "新しい <u>住所<\/u>を 教えてください。", "choices": ["じゅうしょ", "じゅうしょう", "じゅじょ", "じゅじょう"], "answer": 1, "explain": "句意：請告訴我新地址。「住」音讀「じゅう」，「所」音讀「しょ」。"}]}]}, {"no": 2, "instruction": "＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 10, "stem": "この カメラの つかいかたを <u>せつめい<\/u>して ください。", "choices": ["訳明", "設明", "説明", "記明"], "answer": 3, "explain": "句意：請說明一下這台相機的使用方法。「せつめい」寫作「説明」，其他為字形相近的干擾項。"}]}, {"passage": null, "image": null, "questions": [{"n": 11, "stem": "わたしは いつも あさ 7時 <u>おきます<\/u>。", "choices": ["起きます", "置きます", "措きます", "押きます"], "answer": 1, "explain": "句意：我總是早上7點起床。「起きる」是起床；「置く」是放置。"}]}, {"passage": null, "image": null, "questions": [{"n": 12, "stem": "ちかてつの えきは ここから <u>とおい<\/u>です。", "choices": ["近い", "遠い", "違い", "通い"], "answer": 2, "explain": "句意：地鐵站離這裡很遠。「とおい」寫作「遠い」；近い（ちかい）、違い（ちがい）、通い（かよい）。"}]}, {"passage": null, "image": null, "questions": [{"n": 13, "stem": "毎日 <u>やさい<\/u>を 食べます。", "choices": ["理菜", "也祭", "家菜", "野菜"], "answer": 4, "explain": "句意：每天吃蔬菜。「やさい」寫作「野菜」，其他為干擾項。"}]}, {"passage": null, "image": null, "questions": [{"n": 14, "stem": "目を <u>とじて<\/u> ください。", "choices": ["賭じて", "開じて", "閉じて", "関じて"], "answer": 3, "explain": "句意：請閉上眼睛。「とじる」寫作「閉じる」；注意與「開」「関」區分。"}]}, {"passage": null, "image": null, "questions": [{"n": 15, "stem": "この 店は 9時から 6時まで <u>えいぎょう<\/u>して います。", "choices": ["宮業", "営業", "宮事", "営事"], "answer": 2, "explain": "句意：這家店從9點營業到6點。「えいぎょう」寫作「営業」。"}]}]}, {"no": 3, "instruction": "（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを ひとつ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 16, "stem": "大学の（　　）が この 会社に つとめて います。", "choices": ["せんぱい", "しゃいん", "てんいん", "しゃちょう"], "answer": 1, "explain": "句意：大學的學長在這家公司上班。せんぱい（先輩）＝前輩；しゃいん社員、てんいん店員、しゃちょう社長。"}]}, {"passage": null, "image": null, "questions": [{"n": 17, "stem": "いえを 出る 前に、でんきを けしたか（　　）しました。", "choices": ["スタート", "オープン", "スイッチ", "チェック"], "answer": 4, "explain": "句意：出門前檢查了燈關了沒有。チェック＝檢查、核對。"}]}, {"passage": null, "image": null, "questions": [{"n": 18, "stem": "りょうしんが 来たので、とうきょうを（　　）しました。", "choices": ["うけつけ", "あんない", "れんらく", "しょうたい"], "answer": 2, "explain": "句意：父母來了，所以我帶他們遊覽東京。あんない（案内）＝帶路、導覽。"}]}, {"passage": null, "image": null, "questions": [{"n": 19, "stem": "ともだちは やくそくの 時間に おくれましたが、みんなに（　　）。", "choices": ["いけませんでした", "すみませんでした", "あやまりませんでした", "まにあいませんでした"], "answer": 3, "explain": "句意：朋友比約定時間晚到，卻沒有向大家道歉。あやまる（謝る）＝道歉，「〜に謝る」。"}]}, {"passage": null, "image": null, "questions": [{"n": 20, "stem": "この ねこは（　　）いるので おもいです。", "choices": ["たりて", "ふとって", "ふえて", "のこって"], "answer": 2, "explain": "句意：這隻貓很胖，所以很重。ふとる（太る）＝發胖，「太っている」表狀態。"}]}, {"passage": null, "image": null, "questions": [{"n": 21, "stem": "みんなで かんがえれば、いい（　　）が でるかもしれません。", "choices": ["アイディア", "ニュース", "クラブ", "シーズン"], "answer": 1, "explain": "句意：大家一起想的話，說不定能想出好主意。アイディア＝主意、點子。"}]}, {"passage": null, "image": null, "questions": [{"n": 22, "stem": "日本で 買った 本を 国へ（　　）。", "choices": ["おとしました", "かけました", "おくりました", "なげました"], "answer": 3, "explain": "句意：把在日本買的書寄回國了。おくる（送る）＝寄送。"}]}, {"passage": null, "image": null, "questions": [{"n": 23, "stem": "この コーヒーは ちょっと へんな あじが（　　）。", "choices": ["来ますね", "見ますね", "しますね", "いますね"], "answer": 3, "explain": "句意：這咖啡嚐起來味道有點怪。「味がする」表示感覺到某種味道，類似還有「音がする」「においがする」。"}]}, {"passage": null, "image": null, "questions": [{"n": 24, "stem": "お母さんの びょうきが（　　）、よかったですね。", "choices": ["おちて", "きれて", "しまって", "なおって"], "answer": 4, "explain": "句意：太好了，媽媽的病治好了。なおる（治る）＝痊癒。"}]}, {"passage": null, "image": null, "questions": [{"n": 25, "stem": "かさを（　　）あるいて いる 人が いるから、外は 雨でしょう。", "choices": ["さして", "おして", "あけて", "うけて"], "answer": 1, "explain": "句意：外面有人撐著傘走，應該在下雨吧。「傘をさす」＝撐傘。"}]}]}, {"no": 4, "instruction": "＿＿＿の ぶんと だいたい おなじ いみの ぶんが あります。1・2・3・4から いちばん いい ものを 一つ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 26, "stem": "<u>わたしは やまださんを かいものに さそいました。<\/u>", "choices": ["わたしは やまださんに 「今日は かいものに いけません」と 言いました。", "わたしは やまださんに 「今日から かいものに 行って きます」と 言いました。", "わたしは やまださんに 「かいものに 行って きて ください」と 言いました。", "わたしは やまださんに 「いっしょに かいものに いきませんか」と 言いました。"], "answer": 4, "explain": "句意：我邀請山田先生去購物。さそう＝邀請，等於說「要不要一起去購物？」。"}]}, {"passage": null, "image": null, "questions": [{"n": 27, "stem": "<u>デパートで さいふを ぬすまれました。<\/u>", "choices": ["デパートで さいふを とられました。", "デパートで さいふを みせられました。", "デパートで さいふを わたされました。", "デパートで さいふを かえされました。"], "answer": 1, "explain": "句意：錢包在百貨公司被偷了。ぬすむ＝偷，與「とられる（被拿走）」意思相同。"}]}, {"passage": null, "image": null, "questions": [{"n": 28, "stem": "<u>この 車は ヨーロッパせいです。<\/u>", "choices": ["この 車は ヨーロッパで つくられて います。", "この 車は ヨーロッパで のられて います。", "この 車は ヨーロッパで しられて います。", "この 車は ヨーロッパで かわれて います。"], "answer": 1, "explain": "句意：這輛車是歐洲製的。「〜製（せい）」＝在某地製造，即「ヨーロッパで作られています」。"}]}, {"passage": null, "image": null, "questions": [{"n": 29, "stem": "<u>やまもとさんの じは こまかいです。<\/u>", "choices": ["やまもとさんの じは きれいです。", "やまもとさんの じは きたないです。", "やまもとさんの じは ちいさいです。", "やまもとさんの じは おおきいです。"], "answer": 3, "explain": "句意：山本先生的字很小。こまかい＝細小。"}]}, {"passage": null, "image": null, "questions": [{"n": 30, "stem": "<u>きのうの かいぎには たなかさんいがいは 来ました。<\/u>", "choices": ["きのうの かいぎには たなかさんは 来ましたが、ほかの 人は 来ませんでした。", "きのうの かいぎには たなかさんは 来ませんでしたが、ほかの 人は 来ました。", "きのうの かいぎには たなかさんが 来る 前に、ほかの 人が 来ました。", "きのうの かいぎには たなかさんが 来た 後で、ほかの 人が 来ました。"], "answer": 2, "explain": "句意：昨天的會議除了田中先生以外大家都來了。いがい（以外）＝除了…之外，即田中沒來、其他人都來了。"}]}]}, {"no": 5, "instruction": "つぎの ことばの つかいかたで いちばん いい ものを 1・2・3・4から 一つ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 31, "stem": "とちゅう", "choices": ["こんやの <u>とちゅう<\/u>、雨が ふるでしょう。", "まるい テーブルの <u>とちゅう<\/u>に ケーキを おきました。", "ビルと ビルの <u>とちゅう<\/u>から うみが 見えます。", "かいぎの <u>とちゅう<\/u>で 電話が なりました。"], "answer": 4, "explain": "とちゅう（途中）意為「中途、途中」，選項4「會議途中電話響了」為正確用法。"}]}, {"passage": null, "image": null, "questions": [{"n": 32, "stem": "おとなしい", "choices": ["今週は しごとの よていが <u>おとなしい<\/u>です。", "きのうは <u>おとなしい<\/u> 天気でした。", "たなかさんの いぬは <u>おとなしい<\/u>ですね。", "ここは とても <u>おとなしい<\/u> レストランですね。"], "answer": 3, "explain": "おとなしい意為「溫順、穩重」，用於人或動物的性格，選項3「田中先生的狗很溫順」正確。"}]}, {"passage": null, "image": null, "questions": [{"n": 33, "stem": "つたえる", "choices": ["外国語の しょうせつを 日本語に <u>つたえました<\/u>。", "学生に しけんの 時間を <u>つたえました<\/u>。", "ゆうびんきょくで にもつを <u>つたえました<\/u>。", "ともだちの たんじょうびに 花を <u>つたえました<\/u>。"], "answer": 2, "explain": "つたえる（伝える）意為「傳達、轉告」，選項2「把考試時間告訴學生」正確。1應用翻訳する，3、4應用送る、贈る。"}]}, {"passage": null, "image": null, "questions": [{"n": 34, "stem": "かたづける", "choices": ["へやを <u>かたづけて<\/u> パーティーの じゅんびを しました。", "せんせいは 学生を 三つの グループに <u>かたづけました<\/u>。", "プレゼントを きれいな はこに <u>かたづけて<\/u> ともだちに あげます。", "いろいろな いけんが 出たので、少し <u>かたづけました<\/u>。"], "answer": 1, "explain": "かたづける（片付ける）意為「整理、收拾」，選項1「收拾好房間準備派對」正確。2應用分ける，3應用入れる，4應用まとめる。"}]}, {"passage": null, "image": null, "questions": [{"n": 35, "stem": "にあう", "choices": ["いみの <u>にあって<\/u> いる ことばが たくさん あります。", "やまださんは あかい ふくが <u>にあいます<\/u>ね。", "あの 子は 目が お母さんに <u>にあって<\/u> いますね。", "なんども かぞえましたが、かずが <u>にあいません<\/u>。"], "answer": 2, "explain": "にあう（似合う）意為「適合、相稱」，選項2「山田先生很適合穿紅色衣服」正確。1、4應用合う，3應用似る。"}]}]}]}, {"name": "言語知識（文法）・読解", "mondai": [{"no": 1, "instruction": "（　　）に 何を 入れますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 1, "stem": "チーズは ぎゅうにゅう（　　）作られます。", "choices": ["から", "が", "に", "まで"], "answer": 1, "explain": "句意：起司是由牛奶做的。「〜から作られる」表示原料（經化學變化，看不出原形）。"}]}, {"passage": null, "image": null, "questions": [{"n": 2, "stem": "この 料理は 電子レンジを 使えば（　　）できます。", "choices": ["5、6分", "5、6分で", "5、6分に", "5、6分も"], "answer": 2, "explain": "句意：這道菜用微波爐五六分鐘就能做好。「で」表示所需的期限、限度。"}]}, {"passage": null, "image": null, "questions": [{"n": 3, "stem": "「駅は どこですか。」と 外国人（　　）聞かれたので、駅まで いっしょに 行きました。", "choices": ["を", "へ", "に", "か"], "answer": 3, "explain": "句意：有位外國人問我車站在哪裡，於是我陪他一起去了。被動句中動作的施動者用「に」。"}]}, {"passage": null, "image": null, "questions": [{"n": 4, "stem": "わたしの 兄は、パソコンの ことなら（　　）わかります。", "choices": ["なんで", "なにで", "なんでも", "なにも"], "answer": 3, "explain": "句意：我哥哥對電腦方面的事什麼都懂。「なんでも＋肯定」表示全面肯定；「なにも」須接否定。"}]}, {"passage": null, "image": null, "questions": [{"n": 5, "stem": "A:「2時から 会議だから、（　　）行きましょうか。」<br>B:「そうですね。」", "choices": ["そろそろ", "だいたい", "だんだん", "なかなか"], "answer": 1, "explain": "句意：會議2點開始，我們差不多該走了吧。そろそろ＝差不多該…了。"}]}, {"passage": null, "image": null, "questions": [{"n": 6, "stem": "A:「草色 というのは どんないろ ですか。」<br>B:「今 わたしが 着ている シャツの ような、（　　）色です。」", "choices": ["あんな", "こんな", "どの", "その"], "answer": 2, "explain": "句意：就是像我現在穿的這件襯衫這樣的顏色。離說話人近的事物用「こんな」。"}]}, {"passage": null, "image": null, "questions": [{"n": 7, "stem": "今日の じゅぎょうは 休みだと だれかが（　　）を 聞きました。", "choices": ["言って いる", "言って いるの", "言って いること", "言って いるもの"], "answer": 2, "explain": "句意：聽到有人在說今天的課停了。「の」使前面的句子名詞化；感官動詞「聞く・見る」前用「の」而非「こと」。"}]}, {"passage": null, "image": null, "questions": [{"n": 8, "stem": "その 日の 天気を 見て、ぼうしを かぶるか（　　）決めて います。", "choices": ["かぶらない", "かぶらなくて", "かぶらないか", "かぶらないが"], "answer": 3, "explain": "句意：根據當天的天氣決定戴不戴帽子。「〜か〜ないか」表示選擇「是…還是不…」。"}]}, {"passage": null, "image": null, "questions": [{"n": 9, "stem": "教室に 試験の 時間割が はって（　　）。", "choices": ["あります", "います", "おきます", "みます"], "answer": 1, "explain": "句意：教室裡貼著考試時間表。他動詞＋「てある」表示動作結果的狀態。"}]}, {"passage": null, "image": null, "questions": [{"n": 10, "stem": "最近、いろんな しゅるいの ガムが スーパーマーケットで（　　）。", "choices": ["売ります", "売って いきます", "売らせます", "売られて います"], "answer": 4, "explain": "句意：最近超市裡賣著各種各樣的口香糖。主語是口香糖，與「売る」為被動關係，用「売られています」。"}]}, {"passage": null, "image": null, "questions": [{"n": 11, "stem": "学生「先生、作文で 間違えた ところを なおしました。」<br>先生「はい。では、見せて ください。」<br>学生「お願いします……。（　　）。」<br>先生「ええ。よく なりましたね。」", "choices": ["どうしますか", "どうしましょうか", "どうでしょうか", "どうしましたか"], "answer": 3, "explain": "句意：學生請老師看作文並問「（您覺得）怎麼樣呢？」。「どうでしょうか」用於詢問對方的評價。"}]}, {"passage": null, "image": null, "questions": [{"n": 12, "stem": "A「何回も 電話（　　）、どうして 出て くれなかったんですか。」<br>B「すみません。」", "choices": ["すれば", "したら", "したので", "したのに"], "answer": 4, "explain": "句意：給你打了好幾次電話，為什麼沒接呢？「のに」表示逆接，帶有不滿、意外的語氣。"}]}, {"passage": null, "image": null, "questions": [{"n": 13, "stem": "田中「山川さん、今日の 夕食は 何に するんですか。」<br>山川「これから 買い物に 行って、カレーを（　　）と 思います。」", "choices": ["作ろう", "作ります", "作って います", "作った"], "answer": 1, "explain": "句意：我想去買東西回來做咖哩。動詞意志形＋「と思う」表示打算、意志。"}]}, {"passage": null, "image": null, "questions": [{"n": 14, "stem": "わたしの ジュースを 弟に ぜんぶ（　　）。", "choices": ["飲みそうです", "飲むでしょう", "飲まれて しまいました", "飲んで みました"], "answer": 3, "explain": "句意：我的果汁全被弟弟喝光了。被動（受害）＋「てしまう」表示遺憾、無法挽回。"}]}, {"passage": null, "image": null, "questions": [{"n": 15, "stem": "A「すみません。このファクスの 使い方を 教えて ください。」<br>B「ええと、ちょっと 今 いそがしいので、ほかの人に（　　）。」<br>A「分かりました。では、そうします。」", "choices": ["聞いて みたのですが", "聞きたいんですが", "聞こうと 思いますか", "聞いて もらえますか"], "answer": 4, "explain": "句意：我現在有點忙，你能去問問別人嗎？「〜てもらえますか」用於請求對方做某事。"}]}]}, {"no": 2, "instruction": "★に 入る ものは どれですか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 16, "stem": "この パーティーは ＿＿＿ ＿＿＿ ★ ＿＿＿ 入れません。", "choices": ["を", "しか", "チケット", "買った人"], "answer": 4, "explain": "正確語序：チケット を 買った人 しか（入れません）。只有買了票的人才能參加。「しか〜ない」表示限定。"}]}, {"passage": null, "image": null, "questions": [{"n": 17, "stem": "あしたは 会議が あるので ＿＿＿ ＿＿＿ ★ ＿＿＿ に 行きます。", "choices": ["早く", "いつも", "会社", "より"], "answer": 1, "explain": "正確語序：いつも より 早く 会社（に行きます）。明天要開會，所以比平時早去公司。"}]}, {"passage": null, "image": null, "questions": [{"n": 18, "stem": "A「すみません。日曜日は 図書館は 何時まで ＿＿＿ ＿＿＿ ★ ＿＿＿ 。」<br>B「日曜日は 5時までです。」", "choices": ["開いて", "教えて", "くださいませんか", "いるか"], "answer": 2, "explain": "正確語序：開いて いるか 教えて くださいませんか。「〜か」引出疑問內容作為「教える」的對象。"}]}, {"passage": null, "image": null, "questions": [{"n": 19, "stem": "（ろうかで）<br>学生「さようなら。」<br>先生「さようなら。教室には、もう ＿＿＿ ＿＿＿ ★ ＿＿＿ 。」<br>学生「いいえ。田中さんが べんきょうして います。」", "choices": ["も", "か", "いません", "だれ"], "answer": 3, "explain": "正確語序：だれ も いません か。教室裡已經沒有人了嗎？「だれも＋否定」表示全部否定。"}]}, {"passage": null, "image": null, "questions": [{"n": 20, "stem": "わたしは この 音楽 ＿＿＿ ＿＿＿ ★ ＿＿＿ ねむく なります。", "choices": ["かならず", "を", "聞く", "と"], "answer": 4, "explain": "正確語序：を 聞く と かならず（ねむくなります）。我一聽這種音樂就想睡。「と」接辭書形表示條件的必然結果。"}]}]}, {"no": 3, "instruction": "21 から 25 に 何を 入れますか。文章の 意味を 考えて、1・2・3・4から いちばん いい ものを 一つ えらんで ください。", "groups": [{"passage": "これは「料理とわたし」に ついての 作文です。<br><br>　私は 料理を するのが 好きです。しかし、日本に 来る 前は、あまり 料理をしませんでした。国に いる 母（ 21 ） いつも 作ってくれたからです。日本に 来てから、料理を（ 22 ）。最近は、いろいろな 料理を 作って います。自分の 国の 料理を 作る ときは 母に メールで 聞いたり、電話で 聞いたり します。日本の 料理は まだ よく わからないので、ときどき 日本人の 友だちに（ 23 ）。<br>　日本の 料理は、わたしの 国の 料理と 味が ぜんぜん ちがいます。（ 24 ）、最初は びっくりして おいしくないと 思いました。しかし、今は とても おいしいと思います。国に 帰ったら、家族に 日本の 料理を 作って あげようと（ 25 ）。", "image": null, "questions": [{"n": 21, "stem": "（ 21 ）", "choices": ["は", "が", "に", "と"], "answer": 2, "explain": "前句說「我」來日本前不太做飯，這句重點在做飯的人是媽媽，用「が」提示並強調主語。"}, {"n": 22, "stem": "（ 22 ）", "choices": ["しなく なります", "しなく なりました", "するように なります", "するように なりました"], "answer": 4, "explain": "由後文「最近做各種料理」可知來日本後開始做飯。「辭書形＋ようになる」表示變化，已發生所以用過去式。"}, {"n": 23, "stem": "（ 23 ）", "choices": ["教えて もらいます", "教えて くれます", "習って もらいます", "習って くれます"], "answer": 1, "explain": "句意：請日本朋友教我。「教える」是教，「〜てもらう」表示說話人接受別人為自己做某事。"}, {"n": 24, "stem": "（ 24 ）", "choices": ["でも", "それでは", "ですから", "すると"], "answer": 3, "explain": "前句說日本料理和本國料理味道完全不同，後句說一開始覺得不好吃，兩句為因果關係，用「ですから」（所以）。"}, {"n": 25, "stem": "（ 25 ）", "choices": ["思うようです", "思って います", "思ったそうです", "思って いました"], "answer": 2, "explain": "句意：回國後我想做日本料理給家人吃。意志形＋「と思っている」表示說話人目前持續的打算。"}]}]}, {"no": 4, "instruction": "つぎの （1）から （3）の 文章を 読んで、質問に 答えて ください。答えは、1・2・3・4から いちばん いい ものを 一つ えらんで ください。", "groups": [{"passage": "（1）<br>会社の山川さんの机の上に、この手紙があります。<br><br>山川さん<br>さくらデパートのヨウさんから電話がありました。<br>山川さんが送ったファックスについて、質問があるそうです。<br>ヨウさんに電話をしてください（01-3333-2323）。<br>2時までは会議なので、電話に出られないそうです。<br>田中<br>8月24日 12:50", "image": null, "questions": [{"n": 26, "stem": "これを読んで、山川さんが何をしなければならないか。", "choices": ["2時までにヨウさんに電話をします。", "2時までにヨウさんにファックスを送ります。", "2時すぎにヨウさんに電話をします。", "2時すぎにヨウさんにファックスを送ります。"], "answer": 3, "explain": "信中請山川先生給ヨウさん打電話，但ヨウさん2點前在開會無法接電話，所以要在2點以後打電話。"}]}, {"passage": "（2）<br>これは、大学の友だちからアリさんに届いたメールです。<br><br>アリさん<br>こんばんは。<br>風邪をひいてしまったようで、熱があります。<br>明日の朝、病院に行ってから大学に行くので、午前中の授業は休みます。<br>すみませんが、先生に伝えてください。それから、あとで授業のノートを貸してくれませんか。<br>よろしくお願いします。<br>ジョン", "image": null, "questions": [{"n": 27, "stem": "ジョンさんはアリさんに何を頼みましたか。", "choices": ["病気になったので、家に来てほしい。", "明日の朝、一緒に病院に行ってほしい。", "先生に午前の授業に遅れると伝えてほしい。", "明日の授業のノートを貸してほしい。"], "answer": 4, "explain": "約翰感冒發燒，明天上午的課不能去，所以請アリ轉告老師，並希望アリ把（明天的）上課筆記借給他。"}]}, {"passage": "（3）<br>　今朝は早く起きたので、一人で散歩に出かけました。時々座って休みながら、川の近くを1時間くらい歩きました。犬と散歩している人やジョギングをしている人に、たくさん会いました。<br>　家に帰ってから、朝ご飯を食べました。朝ご飯は、散歩の途中で買ったパンと、家にあった牛乳とヨーグルトです。昨日友達からもらったりんごも食べました。おなかがすいていたので、とてもおいしかったです。<br>　朝、散歩すると、とても気持ちがいいです。", "image": null, "questions": [{"n": 28, "stem": "今朝、何をしましたか。", "choices": ["川の近くを一人で歩きました。", "川の近くで1時間座っていました。", "川の近くを犬とジョギングしました。", "川の近くで朝ご飯を食べました。"], "answer": 1, "explain": "第一段提到作者今早一個人出去散步，邊走邊休息，沿著河邊走了1小時左右。"}, {"n": 29, "stem": "次の中で、朝ご飯の時に飲んだり、食べたりしたものは、どれですか。", "choices": ["昨日もらったりんご", "自分で作ったパン", "今朝買ったヨーグルト", "散歩の時に買った牛乳"], "answer": 1, "explain": "第二段：早餐吃了散步途中買的麵包、家裡的牛奶和優格、以及朋友昨天給的蘋果。麵包是買的、優格和牛奶是家裡原有的，故選1。"}]}]}, {"no": 5, "instruction": "つぎの文章を読んで、質問に答えなさい。答えは、1・2・3・4から一番いいものを一つえらびなさい。", "groups": [{"passage": "これは、休みのアルバイトの経験を書いたヤンさんの作文です。<br><br><b>休みのアルバイト<\/b><br>ヤン ミン<br>　わたしは夏休みに、一週間に三日、本屋でアルバイトをしました。とても広い店でお客さんもおおぜい来ました。初めのころは本の場所を覚えたり、並べ方を教えてもらったり、することがたくさんあって大変でしたから、①<u>一日がとても短いと思いました<\/u>。<br>　だんだん慣れましたが、失敗もありました。お客さんに「袋に入れましょうか。」と聞くと、②<u>「いいです。」<\/u>と言われました。わたしは「入れたほうがいいです。」という意味だと思って、本を袋に入れましたが、違いました。<br>　また、ペットの本をさがしているお客さんを、③<u>家具の本のところへ案内してしまった<\/u>こともありました。ペットがベッドと聞こえたのです。<br>　アルバイトを始めて一か月になるころ、店のみんなに「よくがんばっていますね。」と言ってもらって、とてもうれしかったです。お客さんへのサービスのしかたも知ることができました。学校では勉強できない、よい経験ができました。いちばんうれしかったのは、自分で働いてお金をもらったことです。アルバイトをして、働くことの大変さ、お金の大切さを知りました。", "image": null, "questions": [{"n": 30, "stem": "①<u>一日がとても短いと思いました<\/u>とありますが、どうしてですか。", "choices": ["夏休みに一週間アルバイトをしたから", "お客様を接待するのは大変だったから", "まだ仕事に慣れなかったから", "一日中、ずっと本や雑誌を並べていたから"], "answer": 4, "explain": "依參考答案為4。第一段說剛開始要記書的位置、學擺放方法，要做的事很多，所以覺得一天很短。"}, {"n": 31, "stem": "お客さんの②<u>「いいです。」<\/u>は、どんな意味でしたか。", "choices": ["「袋が要ります」とお客様が言いました。", "「袋が要りません」とお客様が言いました。", "「袋に入れてください」とお客様が言いました。", "「自分で袋に入れます」とお客様が言いました。"], "answer": 2, "explain": "作者以為客人要裝袋，裝了之後才發現弄錯了，可知客人說的「いいです」是「不用了」，即不需要袋子。"}, {"n": 32, "stem": "③<u>家具の本のところへ案内してしまった<\/u>とありますが、どうしてですか。", "choices": ["まだお店の中がよくわからなかったから", "ペットの本は家具の本の隣にあったから", "お客さんに家具の本の場所を聞かれたから", "お客さんの言った言葉を間違えて聞いたから"], "answer": 4, "explain": "後一句「ペットがベッドと聞こえたのです」：作者把「ペット（寵物）」聽成了「ベッド（床）」，所以帶客人到家具書區。"}, {"n": 33, "stem": "ヤンさんがアルバイトをして、特にうれしかったことは何ですか。", "choices": ["店のみんなにほめてもらったこと", "自分の力でお金を手に入れたこと", "学校では習えない日本語を知ったこと", "サービスのしかたについて勉強できたこと"], "answer": 2, "explain": "最後一段「いちばんうれしかったのは、自分で働いてお金をもらったことです」，最開心的是靠自己的勞動賺錢。"}]}]}, {"no": 6, "instruction": "右のページの日本文化教室の案内を見て、下の質問に答えてください。答えは、1・2・3・4からいちばんいいものを一つえらびなさい。", "groups": [{"passage": "<b>留学生のための日本文化教室<\/b><br>やさしい日本語で教えます！<br><br>・いけ花：初めての人でも安心！日本の伝統的な美しいいけ花をやってみませんか。／月曜／木曜 19:00〜20:00／800円<br>・日本料理のマナー：日本料理の正しい食べ方を教えます！おいしい料理を食べながら日本文化を勉強しませんか。／金曜 18:30〜20:30／2,500円<br>・着物の着付け〜ひとりで浴衣を着てみよう〜：浴衣を使って、かんたんな着物の着方を教えます。／火曜／水曜 18:30〜20:30、土曜 16:00〜18:00／無料<br>・すし作り〜巻き寿司を作ろう〜：ひとりでもかんたんに作れる巻き寿司の作り方を教えます。／日曜 10:00〜12:00／2,000円<br>・天ぷら作り：野菜と魚の天ぷらを作ってみましょう。／月曜／水曜 18:00〜19:00／700円", "image": "img/2010-2011_R6_1.jpg", "questions": [{"n": 34, "stem": "日本語学校に通っているマリアさんは、学校が休みの日に日本の文化を習いたいと思っています。学校は土曜日と日曜日が休みです。少しでも安いほうがいいです。どの教室がいちばんいいですか。", "choices": ["いけ花", "日本料理のマナー", "着物の着付け", "すし作り"], "answer": 3, "explain": "週末可以上的是著物的著付（土曜）和壽司製作（日曜）；著付免費，壽司要2,000日圓，所以最適合的是著物的著付。"}, {"n": 35, "stem": "日本の大学で勉強しているアレンさんは、平日の夕方、大学の帰りに何か習いたいと思っています。大学の授業は平日5時までです。アレンさんの趣味は料理で、日本の料理を作れるようになりたいと思っています。どの教室がいちばんいいですか。", "choices": ["いけ花", "日本料理のマナー", "すし作り", "天ぷら作り"], "answer": 4, "explain": "想學做日本料理的有壽司製作和天婦羅製作；壽司在週日，天婦羅在週一、週三18:00，平日放學後可去，所以選天婦羅製作。"}]}]}]}, {"name": "聴解", "mondai": [{"no": 1, "instruction": "もんだい1では、まず しつもんを 聞いて ください。それから 話を聞いて、もんだいようしの 1から4の 中から、いちばん いい ものを 一つ えらんでください。", "groups": [{"passage": null, "image": "img/2010-2011_L1_1.jpg", "questions": [{"n": 1, "stem": "1ばん<br>男の学生は明日の研究会でどんな服を着ますか。", "choices": ["1", "2", "3", "4"], "answer": 3, "explain": "老師說天氣熱不用穿上衣（西裝外套），但要打領帶，所以是只穿襯衫加領帶的圖3。", "script": "大学で、女の先生と男の学生が話しています。男の学生は明日の研究会でどんな服を着ますか。<br>女：明日の研究会ですが、受付の仕事よろしくお願いします。<br>男：はい。あのう、何を着てきましょうか。<br>女：そうですね。スーツは持っていますか。<br>男：はい。じゃ、スーツを着てきます。<br>女：あっ、でも、熱いですから、上着はいらないです。<br>男：はい。<br>女：ネクタイはしてきてください。<br>男：分かりました。<br>男の学生は明日の研究会でどんな服を着ますか。"}]}, {"passage": null, "image": null, "questions": [{"n": 2, "stem": "2ばん<br>男の人はこの後最初に何をしますか。", "choices": ["客様の宛先を書く", "資料をコピーする", "封筒に資料を入れる", "資料を郵便局に持っていく"], "answer": 3, "explain": "寫地址的工作女生自己做，資料已經影印好了，女生請男生把資料裝進信封，郵局是之後才去，所以最先做的是3。", "script": "会社で男の人と女の人が話しています。男の人はこの後最初に何をしますか。<br>男：忙しそうだね。手伝おうか。<br>女：あっ、お願い。今封筒にお客様の宛先を書いているところなんだけど。<br>男：じゃあ、僕も一緒に書こうか。<br>女：ううん、これはもうすこしで終わるから、私がやる。うーん、じゃ、封筒に資料を入れてもらえない？<br>男：うん。<br>女：資料はもうコピーして、机の上に置いてあるから。<br>男：わかった。<br>女：それから、後で郵便局に持っていくの手伝ってくれる？<br>男：うん、いいよ。<br>男の人はこの後最初に何をしますか。"}]}, {"passage": null, "image": null, "questions": [{"n": 3, "stem": "3ばん<br>女の人はいつ時計を取りに来ますか。", "choices": ["水曜日の夕方", "木曜日の夕方", "金曜日の夕方", "土曜日の夕方"], "answer": 1, "explain": "女生週五要用，週四不能來拿，店員說稍貴一點但週三傍晚5點左右可以修好，女生同意，所以是週三傍晚。", "script": "時計屋で、女の人と店の人が話しています。女の人はいつ時計を取りに来ますか。<br>女：すみません。この時計壊れてしまったんですが、直りますか。<br>男：ああ、これなら直りますよ。四五日かかりますが。ええと、今週の土曜日にはできます。<br>女：土曜日ですか。あのう、金曜日に使いたいんですが。<br>男：じゃあ、木曜日でいいですか。<br>女：木曜日は取りに来られないんですが。<br>男：ううん、すこし値段が高くなりますけど、水曜日の夕方なら。<br>女：何時頃ですか。<br>男：ううん、五時頃ですね。<br>女：ああ、じゃ、それでお願いします。<br>女の人はいつ時計を取りに来ますか。"}]}, {"passage": null, "image": null, "questions": [{"n": 4, "stem": "4ばん<br>この女の学生は何色の帽子をかぶりますか。", "choices": ["赤の帽子", "黄色の帽子", "青の帽子", "緑の帽子"], "answer": 2, "explain": "女學生原本是第四組（綠色），但老師說今天第二組請假的人多，請她加入第二組，第二組是黃色帽子。", "script": "体育館で、男の先生が話しています。その後、女の学生が質問します。この女の学生は何色の帽子をかぶりますか。<br>男：ええと、今日はバスケットボールをします。四つのグループになって練習します。第一グループの人は赤の帽子をかぶってください。第二グループの人は黄色、第三の人は青、第四の人は緑の帽子です。<br>女：あのう、先生。私、どのグループか分らないんですけど。<br>男：ちょっと待ってください。ええと、第四ですよ。<br>女：分かりました。じゃ、緑ですね。<br>男：あっ、でも、今日は第二グループに休みのひとが多いなあ。悪いけど、このグループに入ってもらえますか。<br>女：はい、分かりました。<br>この女の学生は何色の帽子をかぶりますか。"}]}, {"passage": null, "image": null, "questions": [{"n": 5, "stem": "5ばん<br>バスのお客さんは何時までにバスに戻らなければなりませんか。", "choices": ["1時25分", "2時25分", "2時55分", "3時"], "answer": 3, "explain": "3點出發，必須在出發前5分鐘回到巴士，所以是2點55分。", "script": "バスの中で、旅行会社の人が話しています。バスのお客さんは何時までにバスに戻らなければなりませんか。<br>女：皆様、西山公園に着きました。今、予定より少し遅れまして、1時25分です。ここでバスを降りて、一時間半ぐらい自由時間があります。西山公園はとても広い公園で、1200年前に建てられた寺や神社が残っています。ぜひ行ってみてください。3時には出発しますから、5分前までに必ずバスに戻ってください。<br>バスの中のお客さんは何時までにバスに戻らなければなりませんか。"}]}, {"passage": null, "image": null, "questions": [{"n": 6, "stem": "6ばん<br>男の学生はこれからどこへ行きますか。", "choices": ["うち", "図書館", "教室", "事務所"], "answer": 3, "explain": "男生原本想回家拿字典，但女生說ヤンさん有同樣的字典，現在在教室，男生說去問問看，所以先去教室。", "script": "男の学生と女の学生が話しています。男の学生はこれからどこへ行きますか。<br>男：宿題の作文、出した？<br>女：私はもう出したよ。<br>男：早いね。作文を出す前に直したいところがあるんだけど。辞書をうちに忘れてきたんだ。持っている？<br>女：私も持っていないなあ。きっと図書館にあるよ。<br>男：そうか。でも、図書館のは古いよ。いつもの辞書がいいから、やっぱりうちへ帰ろう。<br>女：あっ、ヤンさんも同じの持ってるから、借りられると思うよ。次の授業があるから、教室にいると思う。<br>男：あっ、そうか。聞いてみるよ。それから、作文はどこに出すの。<br>女：事務所だよ。<br>男：ありがとう。<br>男の学生はこれからどこへ行きますか。"}]}, {"passage": null, "image": null, "questions": [{"n": 7, "stem": "7ばん<br>男の人は何をしなければなりませんか。", "choices": ["紙のゴミを拾う", "空き缶や瓶を拾う", "空き缶や瓶をごみ箱に入れる", "葉っぱを掃除する"], "answer": 2, "explain": "小學生撿紙屑，男性撿空罐和瓶子，女性打掃落葉，所以男性要撿空罐和瓶子。", "script": "女の人が公園の掃除について話しています。男の人は何をしなければなりませんか。<br>女：皆さん、今日は公園の掃除に来てくれて、ありがとうございます。では、まず、小学生のお子さんたちは公園に落ちている紙のゴミを拾って、袋に入れてください。それから、ええと、男の人は空き缶や瓶を拾ってもらえますか。缶と瓶は一緒の袋に入れてください。最後に、女の人ですが、私たちは木の周りに落ちている葉っぱを掃除しましょう。それでは、始めましょう。<br>男の人は何をしなければなりませんか。"}]}, {"passage": null, "image": null, "questions": [{"n": 8, "stem": "8ばん<br>女の学生はこれから何を調べなければなりませんか。", "choices": ["電車の時間", "バスの値段", "旅行の場所", "旅館の値段"], "answer": 2, "explain": "地點和旅館已經決定，學長建議包一台巴士，並請她查一下（28人分攤的）巴士費用，所以要查的是巴士的價錢。", "script": "大学で写真クラブの男の学生と女の学生が話しています。女の学生はこれから何を調べなければなりませんか。<br>男：今年の夏の旅行、場所はもう決まった？<br>女：はい、先輩。今年は海へ行くことになりました。電車の時間はまだ調べてないんですが。<br>男：そう。海なら、電車よりバスのほうがいいよ。荷物も多くなるし、一台借りて。<br>女：ああ、バスですか。そうですね。でも、高くないでしょうか。<br>男：ううん、行く人は何人になった？<br>女：ええと、28人です。<br>男：28人いたら、一人の値段はそんなに高くないと思うけど。ちょっと調べてみてよ。<br>女：はい。<br>男：旅館は？<br>女：はい。この旅館にしようと思っています。値段はちょっと高いんですが、海から近くて、とてもいいところです。<br>男：それはいいね。<br>女の学生はこれから何を調べなければなりませんか。"}]}]}, {"no": 2, "instruction": "もんだい2では、まず しつもんを 聞いて ください。そのあと、もんだいようしを 見て ください。読む 時間が あります。それから 話を聞いて、もんだいようしの 1から4の 中から、いちばん いい ものを 一つ えらんでください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 1, "stem": "1ばん<br>二人はどこで会いますか。", "choices": ["ホテルの入り口", "ホテルの出口", "駅の出口", "駅前の喫茶店"], "answer": 4, "explain": "男生說不熟悉飯店位置想在車站出口見面，女生說車站人多，提議車站前的咖啡店，男生同意。", "script": "女の人と男の人が話しています。二人はどこで会いますか？<br>女：来月のパーティーの知らせ、見た？<br>男：うん、桜ホテルだね。一緒に行こうよ。<br>女：いいよ、どこで会う？ホテルの入り口にする？<br>男：僕は場所がよく分からないから、駅の出口でもいい？<br>女：駅は人が多いから、駅前の喫茶店はどう？<br>男：わかった。<br>二人はどこで会いますか？"}]}, {"passage": null, "image": null, "questions": [{"n": 2, "stem": "2ばん<br>女の人はテニスを何年しましたか。", "choices": ["三年", "四年", "七年", "九年"], "answer": 3, "explain": "高中打了三年、大學打了四年，進公司後兩年完全沒打，所以共打了七年。", "script": "女の人がテニスクラブで自己紹介をしています。女の人はテニスを何年しましたか？<br>女：はじめまして、今日こちらのテニスクラブに入りました木村です。テニスは高校で三年、それから大学で四年、毎日練習していました。その後、会社に入ってから、二年はぜんぜんしていなかったんですが、このクラブが出来たと聞いて、こちらに来ました。どうぞよろしくお願いします。<br>女の人はテニスを何年しましたか？"}]}, {"passage": null, "image": null, "questions": [{"n": 3, "stem": "3ばん<br>明日の天気はどうだと言っていますか。", "choices": ["朝は雨、昼からはいい天気", "朝はいい天気、昼からは曇り", "朝は雨、昼からは曇り", "朝はいい天気、昼からは雨"], "answer": 2, "explain": "下雨的是今天上午；天氣預報說明天早上天氣好，中午開始轉陰但不會下雨。", "script": "学校で先生が話しています。明日の天気はどうだと言っていますか？<br>先生：ええ、明日は運動会です。今日は午前中ずっと雨でしたから、運動会ができるかどうか心配でしたね。でも、天気予報で明日の朝はいい天気だと言っていました。昼からは曇りますが、雨の心配はないそうです。じゃあ、皆さん一緒に運動会の準備を始めましょう。<br>明日の天気はどうだと言っていますか？"}]}, {"passage": null, "image": null, "questions": [{"n": 4, "stem": "4ばん<br>男の人はどうやって映画館まで行きますか。", "choices": ["バスで行く", "電車で行く", "自転車で行く", "歩いて行く"], "answer": 4, "explain": "公車會塞車，騎腳踏車只要10分鐘左右表示不遠，但男生今天沒騎腳踏車，所以說走路去。", "script": "大学で男の人と女の人が話しています。男の人はどうやって映画館まで行きますか？<br>男：いまから映画を見に行こうと思ってるんだ。<br>女：どこ？新しい映画館？<br>男：そう、行ったことある？<br>女：うん、私は先週、大学からバスで行ったんだけど、道が込んでいて大変だった。<br>男：じゃあ、駅まで少し歩くけど、電車に乗ったほうがいいかもしれないね。<br>女：あっ、でも、映画館まで自転車で行っても10分ぐらいしかかからないと思うよ。<br>男：そうか。けっこう近いんだね。でも、今日は自転車で来ていないから、あまり遠くないなら、歩いていくよ。<br>女：今日は天気もいいからね。<br>男の人はどうやって映画館まで行きますか？"}]}, {"passage": null, "image": null, "questions": [{"n": 5, "stem": "5ばん<br>課長はどうして女の人に注意をしましたか。", "choices": ["明日アルバイトを休むから", "日本語がよく分からないから", "休むことを早く言わなかったから", "資料をコピーしなかったから"], "answer": 3, "explain": "課長說「休むのはいいんですが、もっと早く言わなければだめですよ」，是因為她沒有提早告知請假。", "script": "会社でアルバイトの女の人と課長が話しています。課長はどうして女の人に注意をしましたか？<br>女：すみません、課長、明日アルバイトを休みたいんですが。<br>男：ええ？明日？どうしたんですか？<br>女：あのう、外国の友達から電話があって、明日日本に来るそうなんです。友達は日本語がよく分からないので。<br>男：困りましたね。休むのはいいんですが、もっと早く言わなければだめですよ。<br>女：はい、すみません。<br>男：これからは気をつけてくださいね。じゃ、明日の会議の資料を急いでコピーしておいてください。<br>課長はどうして女の人に注意をしましたか？"}]}, {"passage": null, "image": null, "questions": [{"n": 6, "stem": "6ばん<br>女の人はいつ行くのが一番いいといっていますか。", "choices": ["春", "夏", "秋", "冬"], "answer": 1, "explain": "春天有各種祭典，其中歷史祭最有名，她說歷史祭的時候最有趣，所以春天去最好。", "script": "女の人が生まれた町について話しています。女の人はいつ行くのが一番いいといっていますか？<br>女：私の生まれた町は山川町です。日本の北のほうにある町です。冬が長いので、春になると、いろいろなお祭りをします。その中でも歴史祭りが一番有名です。夏は雨が降らなくて気持ちがいいです。秋にはいろいろな果物が食べられます。どの季節もいいですが、歴史祭りの時が一番面白いです。ぜひ、歴史祭りのときに来てください。<br>女の人はいつ行くのが一番いいといっていますか？"}]}, {"passage": null, "image": null, "questions": [{"n": 7, "stem": "7ばん<br>誰が今度の土曜日に結婚しますか。", "choices": ["田中", "課長", "田中の妹", "課長の妹"], "answer": 3, "explain": "田中說週六有婚禮，課長問是否是田中結婚，田中說不是，是妹妹。課長的妹妹是上個月結婚的。", "script": "会社で女の課長と男の人が話しています。誰が今度の土曜日に結婚しますか？<br>女：田中さん、悪いけど、今度の土曜日、会社に来て会議の準備してくれない？<br>男：あっ、すみません。課長、土曜日はちょっと、結婚式なんです。<br>女：えっ？田中さん結婚するんですか？<br>男：あっ、違います。妹です。<br>女：妹さんですか。おめでとうございます。私の妹も先月結婚したんですよ。<br>男：そうなんですか。おめでとうございます。<br>誰が今度の土曜日に結婚しますか？"}]}]}, {"no": 3, "instruction": "もんだい3では、えを 見ながら しつもんを 聞いて ください。➡（やじるし）の 人は 何と 言いますか。1から3の 中から、いちばん いい ものを 一つ えらんでください。", "groups": [{"passage": null, "image": "img/2010-2011_L3_1.jpg", "questions": [{"n": 1, "stem": "1ばん<br>買い物をしました。クレジットカードで払いたいです。何といいますか。", "choices": ["クレジットカードで払ってください。", "クレジットカードが使えますか。", "クレジットカードを見せるつもりです。"], "answer": 2, "explain": "想用信用卡付款時，先問店員「可以用信用卡嗎？」。", "script": "買い物をしました。クレジットカードで払いたいです。何といいますか。<br>1. クレジットカードで払ってください。<br>2. クレジットカードが使えますか。<br>3. クレジットカードを見せるつもりです。"}]}, {"passage": null, "image": "img/2010-2011_L3_2.jpg", "questions": [{"n": 2, "stem": "2ばん<br>雨がふりそうです。会社の人が出かけます。何といいますか？", "choices": ["傘を持たせてください。", "傘を持っていったほうがいいですよ。", "傘を持たなくてもいいですよ。"], "answer": 2, "explain": "看起來要下雨，建議要出門的同事「最好帶傘去」，用「〜たほうがいい」。", "script": "雨がふりそうです。会社の人が出かけます。何といいますか？<br>1. 傘を持たせてください。<br>2. 傘を持っていったほうがいいですよ。<br>3. 傘を持たなくてもいいですよ。"}]}, {"passage": null, "image": "img/2010-2011_L3_3.jpg", "questions": [{"n": 3, "stem": "3ばん<br>友達が暗い教室で本を読んでいます。何といいますか？", "choices": ["電気、消してもいい？", "電気、付けようか？", "電気、付けたままだよ。"], "answer": 2, "explain": "朋友在暗的教室看書，主動提議「要我幫你開燈嗎？」，用意志形＋か。", "script": "友達が暗い教室で本を読んでいます。何といいますか？<br>1. 電気、消してもいい？<br>2. 電気、付けようか？<br>3. 電気、付けたままだよ。"}]}, {"passage": null, "image": "img/2010-2011_L3_4.jpg", "questions": [{"n": 4, "stem": "4ばん<br>靴を買う前に履いてみたいです。店の人に何と言いますか。", "choices": ["これ、履かなければなりませんか。", "これ、履いてみたらどうですか。", "これ、履いてみてもいいですか。"], "answer": 3, "explain": "想試穿時向店員請求許可「可以試穿嗎？」，用「〜てもいいですか」。", "script": "靴を買う前に履いてみたいです。店の人に何と言いますか。<br>1. これ、履かなければなりませんか。<br>2. これ、履いてみたらどうですか。<br>3. これ、履いてみてもいいですか。"}]}, {"passage": null, "image": "img/2010-2011_L3_5.jpg", "questions": [{"n": 5, "stem": "5ばん<br>友達がかわいいネックレスをしています。買った店が知りたいです。何と言いますか。", "choices": ["どの店で買うつもりですか。", "買ったかどうか教えてください。", "それはどこで買ったんですか。"], "answer": 3, "explain": "想知道朋友在哪裡買的，問「那是在哪裡買的？」。", "script": "友達がかわいいネックレスをしています。買った店が知りたいです。何と言いますか。<br>1. どの店で買うつもりですか。<br>2. 買ったかどうか教えてください。<br>3. それはどこで買ったんですか。"}]}]}, {"no": 4, "instruction": "もんだい4では、えなどが ありません。まず ぶんを 聞いて ください。それから、そのへんじを 聞いて、1から3の 中から、いちばん いい ものを 一つ えらんでください。", "groups": [{"passage": null, "image": null, "questions": [{"n": 1, "stem": "1ばん<br>家でパーティーするんだけど、よかったら来ない？", "choices": ["えっ、行ったんですか。", "きっと来ませんよ。", "はい、行きたいです。"], "answer": 3, "explain": "對方邀請來家裡參加派對，接受邀請回答「好，我想去」。", "script": "家でパーティーするんだけど、よかったら来ない？<br>1. えっ、行ったんですか。<br>2. きっと来ませんよ。<br>3. はい、行きたいです。"}]}, {"passage": null, "image": null, "questions": [{"n": 2, "stem": "2ばん<br>てんぷらを食べるのは、初めてですか。", "choices": ["これから始めます。", "ほとんど食べてしまいました。", "いいえ、二度目です。"], "answer": 3, "explain": "被問是不是第一次吃天婦羅，回答「不，是第二次」。", "script": "てんぷらを食べるのは、初めてですか。<br>1. これから始めます。<br>2. ほとんど食べてしまいました。<br>3. いいえ、二度目です。"}]}, {"passage": null, "image": null, "questions": [{"n": 3, "stem": "3ばん<br>今度みんなで行く旅行、どこにしようか。", "choices": ["うん、そうしよう。", "どこでもいいよ。", "行ったことがないよ。"], "answer": 2, "explain": "被問旅行要去哪裡，回答「哪裡都可以」。", "script": "今度みんなで行く旅行、どこにしようか。<br>1. うん、そうしよう。<br>2. どこでもいいよ。<br>3. 行ったことがないよ。"}]}, {"passage": null, "image": null, "questions": [{"n": 4, "stem": "4ばん<br>このペン、ちょっと書きにくいですね。", "choices": ["本当によく書けますね。", "じゃあ、こちらを使ってください。", "ちょっと安いですよ。"], "answer": 2, "explain": "對方說筆不好寫，便遞上另一支「那請用這支」。", "script": "このペン、ちょっと書きにくいですね。<br>1. 本当によく書けますね。<br>2. じゃあ、こちらを使ってください。<br>3. ちょっと安いですよ。"}]}, {"passage": null, "image": null, "questions": [{"n": 5, "stem": "5ばん<br>大学を卒業したら、どうするんですか。", "choices": ["デパートで働くことにしました。", "デパートへ行くところです。", "デパートでアルバイトをしたことがあります。"], "answer": 1, "explain": "被問畢業後的打算，回答「決定在百貨公司工作」，「ことにする」表示決定。", "script": "大学を卒業したら、どうするんですか。<br>1. デパートで働くことにしました。<br>2. デパートへ行くところです。<br>3. デパートでアルバイトをしたことがあります。"}]}, {"passage": null, "image": null, "questions": [{"n": 6, "stem": "6ばん<br>料理、上手ですね。誰に教えてもらったんですか。", "choices": ["はい、教えてもらいました。", "自分で覚えたんです。", "姉に教えましたよ。"], "answer": 2, "explain": "被問是誰教的，回答「是自己學會的」。1沒回答「誰」，3方向相反。", "script": "料理、上手ですね。誰に教えてもらったんですか。<br>1. はい、教えてもらいました。<br>2. 自分で覚えたんです。<br>3. 姉に教えましたよ。"}]}, {"passage": null, "image": null, "questions": [{"n": 7, "stem": "7ばん<br>あのう、ちょっとお願いしたいことがあるんですが……", "choices": ["いいえ、ありませんよ。", "はい、何でしょうか。", "こちらこそ、お願いします。"], "answer": 2, "explain": "對方說有事想拜託，回應「好的，什麼事呢？」。", "script": "あのう、ちょっとお願いしたいことがあるんですが……<br>1. いいえ、ありませんよ。<br>2. はい、何でしょうか。<br>3. こちらこそ、お願いします。"}]}]}]}], "webNoAudio": true}</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const KEY = (D.level || 'N5').toLowerCase() + '-practice-' + D.id;
+const store = {
+  get(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } },
+  set(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+};
+let S = Object.assign({answers:{}, submitted:false, mode:'practice', tab:'all'}, store.get());
+const save = () => store.set(S);
+const $ = s => document.querySelector(s);
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+// theme
+(function(){
+  let t; try { t = localStorage.getItem('n5-theme'); } catch(e){}
+  if (t) document.documentElement.dataset.theme = t;
+  $('#theme').onclick = () => {
+    const dark = document.documentElement.dataset.theme
+      ? document.documentElement.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    const n = dark ? 'light' : 'dark';
+    document.documentElement.dataset.theme = n;
+    try { localStorage.setItem('n5-theme', n); } catch(e){}
+  };
+})();
+
+const SHORT = ['文字・語彙','文法・讀解','聽解'];
+const allQ = []; // {key, sec, q, node}
+const secNodes = [];
+
+function render(){
+  const main = $('#main');
+  if (D.notes) main.appendChild(el('div','notes','<b>說明：</b>' + D.notes));
+  D.sections.forEach((sec, si) => {
+    const sn = el('section','sec-wrap'); sn.dataset.sec = si;
+    sn.appendChild(el('h2','sec', sec.name));
+    const isL = /聴解|聽解/.test(sec.name);
+    if (isL && D.audio) sn.appendChild(player(D.audio, '整份聽解錄音（播放器會固定在上方，可邊聽邊作答）'));
+    if (isL && !D.audio && !sec.mondai.some(m => m.audio)) sn.appendChild(el('div','notes', D.webNoAudio ? '線上版因版權因素不含聽解錄音；仍可作答，作答後可展開「聽力原文」閱讀。' : '此卷沒有聽解錄音檔，可作答後展開「聽力原文」閱讀。'));
+    sec.mondai.forEach(m => {
+      const mn = el('div','mondai');
+      mn.appendChild(el('h3', null, 'もんだい ' + m.no));
+      if (m.instruction) mn.appendChild(el('p','instr', m.instruction));
+      if (m.audio) mn.appendChild(player(m.audio, 'もんだい ' + m.no + ' 錄音'));
+      (m.groups || []).forEach(g => {
+        const gn = el('div','group');
+        if (g.image) { const im = el('img'); im.src = g.image; im.loading = 'lazy'; im.alt = ''; gn.appendChild(im); }
+        if (g.passage) gn.appendChild(el('div','passage', g.passage));
+        g.questions.forEach(q => {
+          const key = si + '-' + m.no + '-' + q.n;
+          const qn = el('div','q'); qn.dataset.key = key;
+          qn.appendChild(el('p','stem', '<span class="qn">' + q.n + '</span>' + (q.stem || '')));
+          const cs = el('div','choices');
+          const longest = Math.max(...q.choices.map(c => c.replace(/<[^>]+>/g,'').length));
+          if (longest > 14) cs.classList.add('long');
+          q.choices.forEach((c, ci) => {
+            const b = el('button','ch','<span class="k">' + (ci+1) + '</span><span>' + c + '</span>');
+            b.onclick = () => pick(key, ci+1);
+            cs.appendChild(b);
+          });
+          qn.appendChild(cs);
+          const fb = el('div','fb');
+          let inner = '<span class="verdict"></span>';
+          if (q.explain) inner += '<div class="ex">' + q.explain + '</div>';
+          fb.innerHTML = inner;
+          if (q.script) { const d = el('details','script','<summary>聽力原文</summary><div>' + q.script + '</div>'); fb.appendChild(d); }
+          qn.appendChild(fb);
+          gn.appendChild(qn);
+          allQ.push({key, sec: si, q, node: qn, group: gn, mondai: mn});
+        });
+        mn.appendChild(gn);
+      });
+      sn.appendChild(mn);
+    });
+    main.appendChild(sn);
+    secNodes.push(sn);
+  });
+  main.appendChild(el('div','result hidden')).id = 'result';
+
+  const tabs = $('#tabs');
+  const mk = (id, label) => { const b = el('button','tab', label); b.dataset.tab = id; b.onclick = () => { S.tab = id; save(); refresh(); scrollTo(0,0); }; tabs.appendChild(b); };
+  mk('all','全部');
+  D.sections.forEach((s, i) => mk(String(i), SHORT[i] || s.name));
+}
+
+function player(src, hint){
+  const a = el('div','audio');
+  const au = document.createElement('audio');
+  au.controls = true; au.preload = 'none'; au.src = encodeURI(src);
+  a.appendChild(au);
+  a.appendChild(el('span','hint', hint));
+  au.onerror = () => { a.querySelector('.hint').textContent = '找不到錄音檔，請確認 mp3 仍在原資料夾：' + src; };
+  return a;
+}
+
+function pick(key, v){
+  if (S.submitted) return;
+  if (S.mode === 'practice' && S.answers[key] != null) return; // 練習模式：作答後鎖定
+  S.answers[key] = v; save(); refresh();
+}
+
+function refresh(){
+  $('#mode').value = S.mode;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === S.tab));
+  secNodes.forEach((n, i) => n.classList.toggle('hidden', S.tab !== 'all' && String(i) !== S.tab));
+  const reveal = S.mode === 'practice' || S.submitted;
+  const wrongOnly = $('#wrongOnly').checked;
+  let done = 0, right = 0, total = 0;
+  allQ.forEach(o => {
+    const a = S.answers[o.key];
+    const inTab = S.tab === 'all' || String(o.sec) === S.tab;
+    if (inTab) { total++; if (a != null) done++; if (a === o.q.answer) right++; }
+    const show = a != null && reveal;
+    o.node.querySelectorAll('.ch').forEach((b, i) => {
+      b.classList.remove('picked','right','wrong');
+      if (show) {
+        if (i+1 === o.q.answer) b.classList.add('right');
+        else if (i+1 === a) b.classList.add('wrong');
+      } else if (a === i+1) b.classList.add('picked');
+    });
+    const fb = o.node.querySelector('.fb');
+    fb.classList.toggle('show', show);
+    if (show) {
+      const v = fb.querySelector('.verdict');
+      const ok = a === o.q.answer;
+      v.className = 'verdict ' + (ok ? 'ok' : 'ng');
+      v.textContent = ok ? '✓ 正確' : '✗ 答錯了，正確答案是 ' + o.q.answer;
+    }
+    const hideIt = wrongOnly && reveal && (a === o.q.answer || a == null);
+    o.node.classList.toggle('hidden', hideIt);
+  });
+  // 隱藏整組 / 整個 もんだい 若其中的題目都被隱藏
+  document.querySelectorAll('.group').forEach(g => g.classList.toggle('hidden', [...g.querySelectorAll('.q')].every(q => q.classList.contains('hidden'))));
+  document.querySelectorAll('.mondai').forEach(m => m.classList.toggle('hidden', [...m.querySelectorAll('.group')].every(g => g.classList.contains('hidden'))));
+  $('#score').innerHTML = reveal
+    ? '已作答 <b>' + done + '</b> / ' + total + '　答對 <b>' + right + '</b>' + (done ? '（' + Math.round(right/done*100) + '%）' : '')
+    : '已作答 <b>' + done + '</b> / ' + total + '（交卷後顯示成績）';
+  $('#submit').classList.toggle('hidden', S.mode !== 'exam' || S.submitted);
+  renderResult(reveal);
+  const h = document.querySelector('header.top').offsetHeight;
+  document.documentElement.style.setProperty('--hdr', (h + 8) + 'px');
+}
+
+function renderResult(reveal){
+  const r = $('#result');
+  if (!reveal || !Object.keys(S.answers).length) { r.classList.add('hidden'); return; }
+  r.classList.remove('hidden');
+  let rows = '';
+  D.sections.forEach((s, i) => {
+    const qs = allQ.filter(o => o.sec === i);
+    const ok = qs.filter(o => S.answers[o.key] === o.q.answer).length;
+    const dn = qs.filter(o => S.answers[o.key] != null).length;
+    rows += '<tr><td>' + s.name + '</td><td class="num">' + ok + ' / ' + qs.length + '</td><td class="num">' + dn + ' 題已答</td></tr>';
+  });
+  const ok = allQ.filter(o => S.answers[o.key] === o.q.answer).length;
+  r.innerHTML = '<b>成績統計</b><table>' + rows + '<tr><th>合計</th><th class="num">' + ok + ' / ' + allQ.length + '</th><th></th></tr></table>';
+}
+
+$('#mode').onchange = e => { S.mode = e.target.value; save(); refresh(); };
+$('#wrongOnly').onchange = refresh;
+$('#submit').onclick = () => {
+  const left = allQ.filter(o => S.answers[o.key] == null).length;
+  if (left && !confirm('還有 ' + left + ' 題未作答，確定要交卷嗎？')) return;
+  S.submitted = true; save(); refresh(); scrollTo(0,0);
+};
+$('#reset').onclick = () => {
+  if (!confirm('清除本卷所有作答紀錄？')) return;
+  S.answers = {}; S.submitted = false; save(); $('#wrongOnly').checked = false; refresh();
+};
+render(); refresh();
+</script>
+</body>
+</html>
